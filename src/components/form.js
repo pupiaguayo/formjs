@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles.css/form.css";
+import swal from "sweetalert";
 class Form extends React.Component {
   state = {
     countries: {
@@ -41,14 +42,24 @@ class Form extends React.Component {
       this.setState({
         error: true,
       });
-      alert("Proceso Fallido");
+      swal({
+        title: "Error!",
+        text: "Todos los campos son necesarios",
+        icon: "error",
+        button: "Finalizar",
+      });
       return;
     }
 
     this.setState({
       error: false,
     });
-    alert("Proceso Exitoso");
+    swal({
+      title: "Enviado!",
+      text: "Formulario enviado con exito",
+      icon: "success",
+      button: "Finalizar",
+    });
     this.setState({
       nombre: "",
       apellido: "",
@@ -98,7 +109,7 @@ class Form extends React.Component {
                       </option>
                     );
                   })
-                  .slice(0, 20)}
+                  .slice(0, 50)}
               </select>
             </label>
 
